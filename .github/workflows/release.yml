@@ -1,0 +1,72 @@
+name: Build and publish release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tag
+        uses: actions/checkout@v4
+
+      - name: Build release tarball (secrets excluded)
+        run: |
+          tar --exclude='.git' --exclude='.env' --exclude='.env.*' \
+              --exclude='keys' --exclude='*.pem' --exclude='*.key' \
+              --exclude='dist' --exclude='venv' --exclude='__pycache__' \
+              --exclude='node_modules' \
+              -czf jlmai-framework-${{ github.ref_name }}-release.tar.gz .
+          sha256sum jlmai-framework-${{ github.ref_name }}-release.tar.gz > jlmai-framework-${{ github.ref_name }}-release.tar.gz.sha256
+          tar -tzf jlmai-framework-${{ github.ref_name }}-release.tar.gz
+
+      - name: Generate provenance.json
+        run: |
+          cat > provenance.json <<'EOF'
+          {
+            "name": "JLMAI Agent Framework",
+            "version": "${{ github.ref_name }}",
+            "publisher": "JLM AI Agent LLC",
+            "repository": "${{ github.repository }}",
+            "commit": "${{ github.sha }}",
+            "built_by": "GitHub Actions",
+            "tarball_sha256_file": "jlmai-framework-${{ github.ref_name }}-release.tar.gz.sha256"
+          }
+          EOF
+          cat provenance.json
+
+      - name: Write release notes
+        run: |
+          cat > RELEASE_NOTES.md <<'EOF'
+          # JLMAI Framework v2.0.0
+
+          Release v2.0.0 of the JLMAI Agent Framework introduces multi-agent coordination pipelines, high-throughput asynchronous task dispatching, EVM smart contract integration, and hardened system observability features.
+
+          ## Highlights
+
+          * **Asynchronous Multi-Agent Dispatcher:** High-performance task distribution powered by Python (`asyncio`, FastAPI, aiokafka) and Rust (`Tokio`, PyO3).
+          * **Zero-Knowledge Proof Verification:** Groth16 circuit integration using Circom, snarkjs, and Arkworks modules.
+          * **Smart Contract Integration:** Contracts deployed on Base Sepolia testnet using Foundry (`JLMAI.sol` via `DeployJLMAI.s.sol`). Testnet deployment only -- not real-money settlement.
+          * **Security & Observability:** Hardened container profiles, Prometheus metrics endpoints, and Grafana dashboard provisioning.
+
+          ## Artifacts
+
+          * `jlmai-framework-v2.0.0-release.tar.gz`
+          * `provenance.json`
+          EOF
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            --title "JLMAI Framework ${{ github.ref_name }}" \
+            --notes-file RELEASE_NOTES.md \
+            "jlmai-framework-${{ github.ref_name }}-release.tar.gz" \
+            "jlmai-framework-${{ github.ref_name }}-release.tar.gz.sha256" \
+            provenance.json
