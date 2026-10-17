@@ -21,6 +21,7 @@ jobs:
               --exclude='keys' --exclude='*.pem' --exclude='*.key' \
               --exclude='dist' --exclude='venv' --exclude='__pycache__' \
               --exclude='node_modules' \
+              --exclude='jlmai-framework-*.tar.gz' \
               -czf jlmai-framework-${{ github.ref_name }}-release.tar.gz .
           sha256sum jlmai-framework-${{ github.ref_name }}-release.tar.gz > jlmai-framework-${{ github.ref_name }}-release.tar.gz.sha256
           tar -tzf jlmai-framework-${{ github.ref_name }}-release.tar.gz
