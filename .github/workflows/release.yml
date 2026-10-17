@@ -31,7 +31,7 @@ jobs:
           {
             "name": "JLMAI Agent Framework",
             "version": "${{ github.ref_name }}",
-            "publisher": "JLM AI Agent LLC",
+            "publisher": "Jessica Lynn Moss",
             "repository": "${{ github.repository }}",
             "commit": "${{ github.sha }}",
             "built_by": "GitHub Actions",
@@ -43,30 +43,50 @@ jobs:
       - name: Write release notes
         run: |
           cat > RELEASE_NOTES.md <<'EOF'
-          # JLMAI Framework v2.0.0
+          # JLMAI Framework v2.0.0 (Setup Files)
 
-          Release v2.0.0 of the JLMAI Agent Framework introduces multi-agent coordination pipelines, high-throughput asynchronous task dispatching, EVM smart contract integration, and hardened system observability features.
+          This v2.0.0 release contains the setup and automation files for the
+          JLMAI Agent Framework repository. It does NOT contain the framework
+          application code itself, which has not been pushed to this repository
+          yet.
 
-          ## Highlights
+          ## Contents
 
-          * **Asynchronous Multi-Agent Dispatcher:** High-performance task distribution powered by Python (`asyncio`, FastAPI, aiokafka) and Rust (`Tokio`, PyO3).
-          * **Zero-Knowledge Proof Verification:** Groth16 circuit integration using Circom, snarkjs, and Arkworks modules.
-          * **Smart Contract Integration:** Contracts deployed on Base Sepolia testnet using Foundry (`JLMAI.sol` via `DeployJLMAI.s.sol`). Testnet deployment only -- not real-money settlement.
-          * **Security & Observability:** Hardened container profiles, Prometheus metrics endpoints, and Grafana dashboard provisioning.
+          * `src/monetization/production_gateway.py` — Revenue gateway API.
+            Records dispatches; performs NO on-chain settlement.
+            Defaults to Base Sepolia testnet (chain 84532).
+          * `jlmai-v2.0.0-release.sh` — Local release helper script.
+          * `.github/workflows/release.yml` — This automation: builds the
+            tarball, SHA-256, and provenance.json on tag push.
+          * `jlmai-vault-lockdown-safe.sh` — Dry-run-by-default vault
+            permissions script. Never touches network/firewall.
+          * `health_check.sh` — Local health check helper.
+          * `README.md` — Project readme with author attribution.
 
           ## Artifacts
 
           * `jlmai-framework-v2.0.0-release.tar.gz`
+          * `jlmai-framework-v2.0.0-release.tar.gz.sha256`
           * `provenance.json`
           EOF
 
-      - name: Create GitHub release
+      - name: Publish release assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.ref_name }}" \
-            --title "JLMAI Framework ${{ github.ref_name }}" \
-            --notes-file RELEASE_NOTES.md \
-            "jlmai-framework-${{ github.ref_name }}-release.tar.gz" \
-            "jlmai-framework-${{ github.ref_name }}-release.tar.gz.sha256" \
-            provenance.json
+          if gh release view "${{ github.ref_name }}" >/dev/null 2>&1; then
+            gh release upload "${{ github.ref_name }}" \
+              "jlmai-framework-${{ github.ref_name }}-release.tar.gz" \
+              "jlmai-framework-${{ github.ref_name }}-release.tar.gz.sha256" \
+              provenance.json --clobber
+            gh release edit "${{ github.ref_name }}" \
+              --title "JLMAI Framework ${{ github.ref_name }}" \
+              --notes-file RELEASE_NOTES.md
+          else
+            gh release create "${{ github.ref_name }}" \
+              --title "JLMAI Framework ${{ github.ref_name }}" \
+              --notes-file RELEASE_NOTES.md \
+              "jlmai-framework-${{ github.ref_name }}-release.tar.gz" \
+              "jlmai-framework-${{ github.ref_name }}-release.tar.gz.sha256" \
+              provenance.json
+          fi
