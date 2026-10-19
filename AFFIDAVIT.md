@@ -6,9 +6,9 @@
 
 ---
 
-**STATE OF __________** )
+**STATE OF SOUTH CAROLINA** )
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) ss.
-**COUNTY OF __________** )
+**COUNTY OF YORK** )
 
 ## AFFIDAVIT
 
