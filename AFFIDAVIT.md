@@ -4,6 +4,9 @@
 > affiant. It is not legal advice. Have it reviewed by licensed legal counsel
 > before signing, notarizing, or publishing.
 
+**Affidavit Version:** 1.0.0
+**Policy:** OpenShell Policy, dated October 4, 2026
+
 ---
 
 **STATE OF SOUTH CAROLINA** )
@@ -20,6 +23,8 @@ I, **Jessica Lynn Moss**, being duly sworn, depose and state as follows:
 affidavit in my capacity as founder and authorized representative of the Company.
 
 1.2. I am the owner and operator of the GitHub account **`jlynn8599-sketch`**.
+
+1.3. Venue for this affidavit is York County, South Carolina 29715.
 
 ### 2. The Repository
 
@@ -71,7 +76,20 @@ of the development of the Work under my direction and control.
 No license, express or implied, is granted except by separate written agreement
 executed by the Company.
 
-### 7. Declaration
+### 7. Release Provenance
+
+7.1. The Repository includes release v2.0.0 (tag `v2.0.0`), released
+October 17, 2026, as documented in `v2.0.0-manifest-corrected.json`.
+
+7.2. Provenance for the v2.0.0 release was generated with
+`provenance-generate-corrected.sh` and recorded in the manifest, including
+SHA-256 artifact checksums.
+
+7.3. The v2.0.0 release materials were committed to the Repository under my
+GitHub account (`jlynn8599-sketch`) with cryptographic (GPG) signatures as
+described in Section 5.
+
+### 8. Declaration
 
 I declare under penalty of perjury that the foregoing is true and correct to the
 best of my knowledge, information, and belief.
@@ -82,7 +100,7 @@ ___________________________________________
 **Jessica Lynn Moss**, Founder
 JLM AI Agent LLC
 
-Date: ____________________
+Date: October 18, 2026
 
 &nbsp;
 
