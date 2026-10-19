@@ -19,7 +19,7 @@ I, **Jessica Lynn Moss**, being duly sworn, depose and state as follows:
 
 ### 1. Identity and Capacity
 
-1.1. I am the founder of **JLM AI Agent LLC** (the "Company"), and I make this
+1.1. I am the founder of **JLMAIAGENT LLC** (the "Company"), and I make this
 affidavit in my capacity as founder and authorized representative of the Company.
 
 1.2. I am the owner and operator of the GitHub account **`jlynn8599-sketch`**.
@@ -52,7 +52,7 @@ property rights of any third party.
 
 4.1. All right, title, and interest in and to the Work, including all copyrights
 and other intellectual property rights therein, are owned exclusively by
-**JLM AI Agent LLC**.
+**JLMAIAGENT LLC**.
 
 4.2. The Work has not been assigned, licensed, pledged, or otherwise encumbered
 in any manner inconsistent with the Company's sole ownership, except as
@@ -72,7 +72,7 @@ of the development of the Work under my direction and control.
 
 ### 6. Proprietary Status
 
-6.1. The Work is proprietary to JLM AI Agent LLC. All rights are reserved.
+6.1. The Work is proprietary to JLMAIAGENT LLC. All rights are reserved.
 No license, express or implied, is granted except by separate written agreement
 executed by the Company.
 
@@ -98,7 +98,7 @@ best of my knowledge, information, and belief.
 
 ___________________________________________
 **Jessica Lynn Moss**, Founder
-JLM AI Agent LLC
+JLMAIAGENT LLC
 
 Date: October 18, 2026
 
