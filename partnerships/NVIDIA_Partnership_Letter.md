@@ -31,6 +31,16 @@ OpenShell Policy (October 4, 2026) establishes ownership, and the v2.0.0
 release provenance (October 17, 2026) is recorded with SHA-256 artifact
 checksums in the repository.
 
+Updated October 23, 2026: new security code is now live in the repository —
+a Merkle tree for provenance, with inclusion proofs, and a canary tripwire
+honeypot for detecting tampering. To be plain about their limits: a Merkle
+root proves integrity, not authenticity on its own, and a canary detects
+tampering after the fact — it does not block an attack in real time.
+
+Note: JLMAIAGENT LLC formation is still in progress; the official filing
+date is to be confirmed before this letter is sent through the NVIDIA
+Inception application.
+
 I would love for us to partner together — particularly around AI agent
 orchestration at scale and how the JLMAI Agent Framework can complement
 NVIDIA's AI platform and ecosystem.

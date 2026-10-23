@@ -25,6 +25,7 @@ complex AI agent workloads.
 - Repository: https://github.com/jlynn8599-sketch/jlmai-agent-framework
 - v1.0.0 OpenShell Policy (October 4, 2026) — ownership documented
 - v2.0.0 release provenance (October 17, 2026) — SHA-256 artifact checksums
+- Updated October 23, 2026: Merkle tree for provenance, with inclusion proofs, and canary tripwire honeypot, now live in the repository — with the limits that a Merkle root proves integrity, not authenticity on its own, and a canary detects tampering after the fact, it does not block an attack in real time
 - License: Proprietary, JLMAIAGENT LLC. All rights reserved.
 
 ## Pitch deck checklist (Inception asks for a short deck)
