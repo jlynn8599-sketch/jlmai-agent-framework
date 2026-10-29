@@ -1,0 +1,41 @@
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+    authors:
+      - octocat
+  categories:
+    - title: "Breaking Changes"
+      labels:
+        - Semver-Major
+        - breaking-change
+    - title: "Security & Authorization"
+      labels:
+        - security
+        - authorization
+        - fail-closed
+    - title: "Provenance & Release Integrity"
+      labels:
+        - provenance
+        - release-integrity
+        - cryptographic-signing
+    - title: "Tests & Verification"
+      labels:
+        - tests
+        - verification
+    - title: "Features & Improvements"
+      labels:
+        - Semver-Minor
+        - enhancement
+        - feature
+    - title: "Bug Fixes"
+      labels:
+        - bug
+        - fix
+    - title: "Documentation"
+      labels:
+        - documentation
+        - docs
+    - title: "Other Changes"
+      labels:
+        - "*"
